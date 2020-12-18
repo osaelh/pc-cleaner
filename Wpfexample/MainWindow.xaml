@@ -1,0 +1,73 @@
+﻿<Window x:Class="Wpfexample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa5="http://schemas.fontawesome.com/icons/"
+        xmlns:local="clr-namespace:Wpfexample" xmlns:fa51="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False">
+    <Grid>
+        <Canvas HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="207" Background="#1163ac" >
+            <Label Content="OUSSAMA" Canvas.Left="37" Canvas.Top="4" Width="105" VerticalAlignment="Center" RenderTransformOrigin="0.758,0.528" Height="40" FontSize="20"/>
+            <Label Content="PC-CLEANER" Canvas.Left="37" Canvas.Top="33" Width="105" Foreground="White" FontSize="16" RenderTransformOrigin="0.484,0.275"/>
+            <Button Content="SITE WEB" Canvas.Left="37" Canvas.Top="340" Width="124" RenderTransformOrigin="0.246,0.807" Height="33" Background="#1e8ce5" Foreground="white" x:Name="webSite"/>
+            <Button Background="#1e8ce5" HorizontalContentAlignment="Left" Height="38" Canvas.Top="152" Width="207" >
+                <StackPanel Orientation="Horizontal">
+                    <fa51:ImageAwesome  Icon="Search"  Width="20" Height="20" Margin="10,0,0,0" />
+                    <Label Content="ANALYSER" Foreground="White"/>
+                </StackPanel>
+            </Button>
+            <Button Background="#1e8ce5" HorizontalContentAlignment="Left" Height="38" Canvas.Top="239" Width="207" >
+                <StackPanel Orientation="Horizontal">
+                    <fa51:ImageAwesome Icon="Tasks"    Width="20" Height="20" Margin="10,0,0,0" />
+                    <Label Content="OPTIONS" Foreground="White"/>
+                </StackPanel>
+            </Button>
+            <Button Background="#1e8ce5" HorizontalContentAlignment="Left" Height="38" Canvas.Top="109" Width="207" >
+                <StackPanel Orientation="Horizontal">
+                    <fa51:ImageAwesome  Icon="Laptop"  Width="20" Height="20" Margin="10,0,0,0" />
+                    <Label Content="VUE D'ENSEMBLE" Foreground="White"/>
+                </StackPanel>
+            </Button>
+            <Button Background="#1e8ce5" HorizontalContentAlignment="Left" Height="38" Canvas.Top="196" Width="207" >
+                <StackPanel Orientation="Horizontal">
+                    <fa51:ImageAwesome  Icon="History"  Width="20" Height="20" Margin="10,0,0,0" />
+                    <Label Content="HISTORIQUE" Foreground="White"/>
+                </StackPanel>
+            </Button>
+        </Canvas>
+        <Canvas HorizontalAlignment="Left" Height="107" Margin="207,0,-0.4,0" VerticalAlignment="Top" Width="587" Background="#1e8ce6">
+            <Label x:Name="lbl" Content="Analyse du PC necessaire" Canvas.Left="64" Width="264" Foreground="White" FontSize="20"/>
+            <Label x:Name="spaceToClean" Content="Espace a nettoyer  : a déterminer par analyse" Canvas.Left="64" Canvas.Top="30" Width="250" Foreground="White"/>
+            <Label x:Name="lastAnalysis" Content="Dernière analyse : 11/11/11 " Canvas.Left="64" Canvas.Top="56" Width="250" Foreground="White"/>
+            <Label x:Name="date" Content="Dernière MAJ : 12/12/12 " Canvas.Left="64" Canvas.Top="81" Width="250" Foreground="White"/>
+            <Button x:Name="analyser" Content="ANALYSER" HorizontalAlignment="Left" VerticalAlignment="Top" Width="176" Canvas.Left="361" Canvas.Top="30" Height="39" Foreground="White" Background="#1e8ce6" BorderThickness="2" BorderBrush="White" Click="Button_Click"/>
+        </Canvas>
+        <Canvas HorizontalAlignment="Left" Height="91" Margin="207,329,-0.4,0" VerticalAlignment="Top" Width="587" Background="LightGray">
+            <Label Content="PC-CLEANER est un logiciel made in France qui respect votre vie privée." Canvas.Left="23" Canvas.Top="21" Width="395" Height="28"/>
+            <Label Content="C'est gratuit et ca le restera." Canvas.Left="23" Canvas.Top="40" Width="185"/>
+        </Canvas>
+        <Button x:Name="btnNet" Background="#1e8ce5"  Margin="259,152,420.6,123" HorizontalAlignment="Center" Width="114" Click="btnNet_Click">
+            <StackPanel Orientation="Vertical">
+                <fa51:ImageAwesome  Icon="PaintBrush"  Width="20" Height="20"  />
+                <Label Content="NETTOYER" Foreground="White"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnHis" Background="#1e8ce5"  Margin="421,152,258.6,123" HorizontalAlignment="Center" Width="114">
+            <StackPanel Orientation="Vertical">
+                <fa51:ImageAwesome  Icon="History"  Width="20" Height="20"  />
+                <Label Content="HITORIQUE" Foreground="White" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnUpd" Background="#1e8ce5"  Margin="595,152,84.6,123" HorizontalAlignment="Center" Width="114">
+            <StackPanel Orientation="Vertical">
+                <fa51:ImageAwesome  Icon="Download"  Width="20" Height="20"  />
+                <Label Content="METTRE A JOUR" Foreground="White"/>
+            </StackPanel>
+        </Button>
+        <ProgressBar  x:Name="Progress" Margin="207,198,-0.4,202"  Value="10" Visibility="Hidden" Foreground="#FF1E8CE5" ></ProgressBar>
+
+
+    </Grid>
+</Window>
