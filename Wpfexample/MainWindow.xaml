@@ -12,7 +12,7 @@
             <Label Content="OUSSAMA" Canvas.Left="37" Canvas.Top="4" Width="105" VerticalAlignment="Center" RenderTransformOrigin="0.758,0.528" Height="40" FontSize="20"/>
             <Label Content="PC-CLEANER" Canvas.Left="37" Canvas.Top="33" Width="105" Foreground="White" FontSize="16" RenderTransformOrigin="0.484,0.275"/>
             <Button Content="SITE WEB" Canvas.Left="37" Canvas.Top="340" Width="124" RenderTransformOrigin="0.246,0.807" Height="33" Background="#1e8ce5" Foreground="white" x:Name="webSite"/>
-            <Button Background="#1e8ce5" HorizontalContentAlignment="Left" Height="38" Canvas.Top="152" Width="207" >
+            <Button Background="#1e8ce5" HorizontalContentAlignment="Left" Height="38" Canvas.Top="152" Width="207" Click="Button_Click" >
                 <StackPanel Orientation="Horizontal">
                     <fa51:ImageAwesome  Icon="Search"  Width="20" Height="20" Margin="10,0,0,0" />
                     <Label Content="ANALYSER" Foreground="White"/>
@@ -30,7 +30,7 @@
                     <Label Content="VUE D'ENSEMBLE" Foreground="White"/>
                 </StackPanel>
             </Button>
-            <Button Background="#1e8ce5" HorizontalContentAlignment="Left" Height="38" Canvas.Top="196" Width="207" >
+            <Button Background="#1e8ce5" HorizontalContentAlignment="Left" Height="38" Canvas.Top="196" Width="207" Click="btnHis_Click" >
                 <StackPanel Orientation="Horizontal">
                     <fa51:ImageAwesome  Icon="History"  Width="20" Height="20" Margin="10,0,0,0" />
                     <Label Content="HISTORIQUE" Foreground="White"/>
@@ -54,19 +54,20 @@
                 <Label Content="NETTOYER" Foreground="White"/>
             </StackPanel>
         </Button>
-        <Button x:Name="btnHis" Background="#1e8ce5"  Margin="421,152,258.6,123" HorizontalAlignment="Center" Width="114">
+        <Button x:Name="btnHis" Background="#1e8ce5"  Margin="421,152,258.6,123" HorizontalAlignment="Center" Width="114" Click="btnHis_Click">
             <StackPanel Orientation="Vertical">
                 <fa51:ImageAwesome  Icon="History"  Width="20" Height="20"  />
                 <Label Content="HITORIQUE" Foreground="White" />
             </StackPanel>
         </Button>
-        <Button x:Name="btnUpd" Background="#1e8ce5"  Margin="595,152,84.6,123" HorizontalAlignment="Center" Width="114">
+        <Button x:Name="btnUpd" Background="#1e8ce5"  Margin="595,152,84.6,123" HorizontalAlignment="Center" Width="114" Click="btnUpd_Click">
             <StackPanel Orientation="Vertical">
                 <fa51:ImageAwesome  Icon="Download"  Width="20" Height="20"  />
                 <Label Content="METTRE A JOUR" Foreground="White"/>
             </StackPanel>
         </Button>
         <ProgressBar  x:Name="Progress" Margin="207,198,-0.4,202"  Value="10" Visibility="Hidden" Foreground="#FF1E8CE5" ></ProgressBar>
+        <Label Visibility="Hidden" x:Name="history" Foreground="Black" Margin="259,134,146.6,99"/>
 
 
     </Grid>

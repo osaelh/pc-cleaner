@@ -1,22 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Timer = System.Threading.Timer;
+using System.Windows.Forms;
 
 namespace Wpfexample
 {
@@ -34,7 +23,7 @@ namespace Wpfexample
 
         private void WebSite_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Some URL");
+            System.Windows.MessageBox.Show("Some URL");
         }
        
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -47,22 +36,23 @@ namespace Wpfexample
             {
                 b += fi.Length;
             }
-            spaceToClean.Content = "The size of " + di.Name + " is \n" + b / 1000000 + " Megabytes.\n";
             
+
 
             if ((string)lbl.Content == "Analyse du PC necessaire")
             {
                 lbl.Content = "Analyse en cours...";
-                
+
             }
-           
+
 
             btnUpd.Visibility = Visibility.Hidden;
             btnNet.Visibility = Visibility.Hidden;
             btnHis.Visibility = Visibility.Hidden;
             date.Visibility = Visibility.Hidden;
+            lastAnalysis.Visibility = Visibility.Hidden;
 
-            analyser.Content = "Arreter";
+           /* analyser.Content = "Arreter";*/
 
 
 
@@ -81,6 +71,8 @@ namespace Wpfexample
                         Progress.Value = i;
                         if (i == 99)
                         {
+                            spaceToClean.Content = "The size of " + di.Name + " is \n" + b / 1000000 + " Megabytes.\n";
+                            date.Visibility = Visibility.Hidden;
                             lbl.Content = "Analyse terminer!";
                            
                             btnUpd.Visibility = Visibility.Visible;
@@ -96,7 +88,7 @@ namespace Wpfexample
 
                 }
             });
-
+            File.AppendAllText(@"C:\Users\Administrateur\Desktop\pc-cleaner-master\Wpfexample\history.txt", "Analyse réalisée le : " + DateTime.Now.ToString() + Environment.NewLine);
         }
 
         private void btnNet_Click(object sender, RoutedEventArgs e)
@@ -116,5 +108,61 @@ namespace Wpfexample
                 throw new ArgumentNullException("try closing all apps");
             }
         }
+
+        private void btnHis_Click(object sender, RoutedEventArgs e)
+        {
+            String line;
+        /*    btnHis.Visibility = Visibility.Hidden;
+            btnNet.Visibility = Visibility.Hidden;
+            btnUpd.Visibility = Visibility.Hidden;*/
+
+            //Pass the file path and file name to the StreamReader constructor
+            StreamReader sr = new StreamReader(@"C:\Users\Administrateur\Desktop\pc-cleaner-master\Wpfexample\history.txt");
+
+            //Read the first line of text
+            line = sr.ReadLine();
+
+            //Continue to read until you reach end of file
+            while (line != null)
+            {
+                /*history.Visibility = Visibility.Visible;*/
+                //write the lie to console window
+                /*txt_output.Items.Add(line);*/
+                date.Visibility = Visibility.Visible;
+                date.Content = line;
+                //Read the next line
+                line = sr.ReadLine();
+            }
+            //close the file
+            sr.Close();
+        }
+
+        private void btnUpd_Click(object sender, RoutedEventArgs e)
+        {
+            WebClient webClient = new WebClient();
+
+            try
+            {
+                if (!webClient.DownloadString("http://localhost/pc-cleaner/version.txt").Contains("v0.0.0"))
+                {
+                    if (System.Windows.Forms.MessageBox.Show("Looks like there is an update! Do you want to download it?", "Demo", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes) using (var client = new WebClient())
+
+                        {
+                            Process.Start(@".\demoUpdater.exe");
+                            this.Close();
+                        }
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Vous êtes déjà à jour !");
+                }
+            }
+            catch
+            {
+
+            }
+        }
     }
 }
+    
